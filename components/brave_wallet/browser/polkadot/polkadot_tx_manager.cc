@@ -106,6 +106,7 @@ void PolkadotTxManager::ApproveTransaction(
       recipient,
       base::BindOnce(&PolkadotTxManager::OnApprovePolkadotTransaction,
                      weak_ptr_factory_.GetWeakPtr(), std::move(tx_meta),
+
                      std::move(callback)));
 }
 
@@ -198,7 +199,7 @@ void PolkadotTxManager::OnGetChainMetadataForUnapproved(
   auto account_id = params->from.Clone();
   auto transfer_all = params->sending_max_amount;
   auto send_amount = MojomToUint128(params->amount);
-  std::optional<uint32_t> asset_id = std::nullopt;
+  auto asset_id = params->asset_id;
 
   std::variant<uint128_t, TransferAll> transfer_amount = send_amount;
   if (transfer_all) {
@@ -233,7 +234,7 @@ void PolkadotTxManager::OnGetFeeForUnapproved(
   CHECK(recipient.has_value());
 
   auto amount = MojomToUint128(params->amount);
-  if (params->sending_max_amount) {
+  if (params->sending_max_amount && !params->asset_id.has_value()) {
     // If we're sending the maximum amount, the front-end will refuse to let the
     // user sign due to insufficient balances i.e. `(x + fee) > x` for all x. We
     // manually adjust this and if our fee is larger than our max send amount,
@@ -253,6 +254,9 @@ void PolkadotTxManager::OnGetFeeForUnapproved(
   tx.set_fee(partial_fee.value());
   tx.set_recipient(*recipient);
   tx.set_transfer_all(params->sending_max_amount);
+  if (params->asset_id.has_value()) {
+    tx.set_asset_id(*params->asset_id);
+  }
   tx_metadata.set_tx(std::move(tx));
 
   tx_metadata.set_from(params->from);
