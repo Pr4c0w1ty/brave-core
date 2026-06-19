@@ -23,6 +23,7 @@
 #include "brave/ios/browser/brave_search/brave_search_make_default_javascript_feature.h"
 #include "brave/ios/browser/brave_shields/cookie_control_javascript_feature.h"
 #include "brave/ios/browser/brave_shields/farbling_javascript_feature.h"
+#include "brave/ios/browser/brave_shields/protection_stats_javascript_feature.h"
 #include "brave/ios/browser/global_privacy_control/gpc_javascript_feature.h"
 #include "brave/ios/browser/skus/skus_javascript_feature.h"
 #include "brave/ios/browser/ui/web_view/features.h"
@@ -168,6 +169,11 @@ std::vector<web::JavaScriptFeature*> BraveWebClient::GetJavaScriptFeatures(
             brave::features::kUseChromiumWebViewsAutofill)) {
       features.push_back(LoginsJavaScriptFeature::GetInstance());
     }
+
+    // Some privacy related features need to be injected in a specific order
+    // as they may override similar JavaScript APIs
+    features.push_back(
+        brave_shields::ProtectionStatsJavaScriptFeature::GetInstance());
   }
   return features;
 }
