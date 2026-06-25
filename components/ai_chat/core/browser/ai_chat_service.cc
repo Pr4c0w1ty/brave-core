@@ -506,7 +506,10 @@ void AIChatService::OnOsCryptAsyncReady(
               *bridge_out = std::make_unique<AIChatSyncBridge>(
                   std::make_unique<syncer::ClientTagBasedDataTypeProcessor>(
                       syncer::AI_CHAT_CONVERSATION, base::DoNothing()),
-                  db);
+                  db,
+                  // No remote-change listener yet; service integration wires
+                  // one in a later change.
+                  base::DoNothing());
               *weak_out = (*bridge_out)->GetWeakPtr();
             },
             database_ptr, &sync_bridge_, &sync_bridge_weak_));
