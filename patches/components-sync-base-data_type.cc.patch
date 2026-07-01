@@ -1,8 +1,8 @@
 diff --git a/components/sync/base/data_type.cc b/components/sync/base/data_type.cc
-index 11dd8058604743796dc2140a063bc6fcb06336bb..3de51b9a006d16f8dd2a6304fea3a465a95ea1ad 100644
+index 7de01d6b4f352138a444a61609181cac8b166bd2..39b5875aafbbb9c788e87ba771bde28f9eb048e8 100644
 --- a/components/sync/base/data_type.cc
 +++ b/components/sync/base/data_type.cc
-@@ -1164,10 +1164,25 @@ constexpr std::array<DataTypeInfo, syncer::GetNumDataTypes()>
+@@ -1180,10 +1180,25 @@ constexpr std::array<DataTypeInfo, syncer::GetNumDataTypes()>
              .cross_user_sharing_policy = CrossUserSharingPolicy::kNone,
              .local_sync_support_policy = LocalSyncSupportPolicy::kSupported,
          },
@@ -24,12 +24,12 @@ index 11dd8058604743796dc2140a063bc6fcb06336bb..3de51b9a006d16f8dd2a6304fea3a465
      }};
  
  // LINT.IfChange(DataTypeHistogramSuffix)
--static_assert(GetNumDataTypes() == 63,
-+static_assert(GetNumDataTypes() == 63 + 1,
+-static_assert(GetNumDataTypes() == 64,
++static_assert(GetNumDataTypes() == 64 + 1,
                "When adding a new type, update kDataTypeInfoTable, update "
                "histograms.xml and follow the integration checklist in "
                "https://www.chromium.org/developers/design-documents/sync/"
-@@ -1384,6 +1399,9 @@ void AddDefaultFieldValue(DataType type, sync_pb::EntitySpecifics* specifics) {
+@@ -1403,6 +1418,9 @@ void AddDefaultFieldValue(DataType type, sync_pb::EntitySpecifics* specifics) {
      case THEMES_ANDROID:
        specifics->mutable_theme_android();
        break;
@@ -39,7 +39,7 @@ index 11dd8058604743796dc2140a063bc6fcb06336bb..3de51b9a006d16f8dd2a6304fea3a465
    }
  }
  
-@@ -1745,6 +1763,8 @@ DataTypeForHistograms DataTypeHistogramValue(DataType data_type) {
+@@ -1766,6 +1784,8 @@ DataTypeForHistograms DataTypeHistogramValue(DataType data_type) {
        return DataTypeForHistograms::kGeminiThread;
      case THEMES_ANDROID:
        return DataTypeForHistograms::kThemesAndroid;
