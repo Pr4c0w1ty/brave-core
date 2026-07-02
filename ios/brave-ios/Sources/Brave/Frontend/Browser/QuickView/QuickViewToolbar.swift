@@ -22,10 +22,15 @@ struct QuickViewToolbarView: View {
   var body: some View {
     VStack(spacing: 0) {
       topRow
-      bottomRow
-        .padding(.top, 12)
+        .padding(.top, viewModel.collapseProgress < 1 ? 16 : 4)
+      if viewModel.collapseProgress < 1 {
+        bottomRow
+          .padding(.top, 12)
+          .padding(.bottom, 16)
+      }
     }
-    .padding(16)
+    .padding(.horizontal, 16)
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
   }
 
   private var shieldButton: some View {
@@ -106,7 +111,7 @@ struct QuickViewToolbarView: View {
           size: baseAddressFontSize - addressFontCollapseDelta * viewModel.collapseProgress
         )
       )
-      .foregroundStyle(Color(braveSystemName: .textTertiary))
+      .foregroundStyle(Color(braveSystemName: .textPrimary))
       .lineLimit(1)
       .frame(maxWidth: .infinity)
       .accessibilityLabel(viewModel.url.host ?? viewModel.url.absoluteString)
