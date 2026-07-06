@@ -10,7 +10,7 @@ import Foundation
 import Growth
 import Preferences
 import Shared
-import Web
+@_spi(ChromiumWebViewAccess) import Web
 import os.log
 
 extension TabDataValues {
@@ -33,16 +33,18 @@ protocol WalletTabHelperDelegate: AnyObject {
 
 /// Encapsulates the wallet (dapp provider) state associated with a tab, acting as the delegate,
 /// events listener and keyring observer for the tab's Ethereum, Solana and keyring services.
-class WalletTabHelper: NSObject {
+class WalletTabHelper: NSObject, TabObserver {
   private(set) weak var tab: (any TabState)?
   weak var delegate: WalletTabHelperDelegate?
 
   init(tab: some TabState) {
     self.tab = tab
     super.init()
+    tab.addObserver(self)
   }
 
   deinit {
+    tab?.removeObserver(self)
     // A number of mojo-powered core objects have to be deconstructed on the same
     // thread they were constructed
     var mojoObjects: [Any?] = [
@@ -57,6 +59,20 @@ class WalletTabHelper: NSObject {
       mojoObjects = []
     }
   }
+
+  // MARK: - TabObserver
+
+  func tabDidCreateWebView(_ tab: some TabState) {
+    if FeatureList.kUseProfileWebViewConfiguration.enabled {
+      BraveWebView.from(tab: tab)?.walletProviderDelegate = self
+    }
+  }
+
+  func tabWillBeDestroyed(_ tab: some TabState) {
+    tab.removeObserver(self)
+  }
+
+  // MARK: -
 
   private var _walletEthProvider: BraveWalletEthereumProvider?
   private var _walletSolProvider: BraveWalletSolanaProvider?
@@ -223,7 +239,9 @@ extension WalletTabHelper: BraveWalletProviderDelegate {
   }
 
   func walletInteractionDetected() {
-    // No usage for iOS
+    if FeatureList.kUseProfileWebViewConfiguration.enabled {
+      isWalletIconVisible = true
+    }
   }
 
   func showWalletBackup() {

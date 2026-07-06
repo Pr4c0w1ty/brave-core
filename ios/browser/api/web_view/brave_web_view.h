@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol BraveTalkTabHelperBridge;
 @protocol BraveSearchMakeDefaultTabHelperBridge;
 @protocol PrintHandler;
+@protocol BraveWalletProviderDelegate;
 
 typedef void (^ResetConfigurationCallback)(id<ProfileBridge>,
                                            WKWebViewConfiguration*);
@@ -163,10 +164,13 @@ CWV_EXPORT
 @end
 
 CWV_EXPORT
-@interface BraveWebView (WalletWebUI)
+@interface BraveWebView (Wallet)
 /// A bridge for handling Brave Wallet WebUI page actions
 @property(nonatomic, weak, nullable) id<WalletPageHandlerBridge>
     walletPageHandler;
+/// A bridge for handling wallet provider actions
+@property(nonatomic, weak, nullable) id<BraveWalletProviderDelegate>
+    walletProviderDelegate;
 @end
 
 CWV_EXPORT
