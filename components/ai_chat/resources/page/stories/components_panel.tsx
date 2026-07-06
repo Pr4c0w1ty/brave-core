@@ -10,7 +10,6 @@ import { useArgs } from '@storybook/preview-api'
 import { Meta, StoryObj } from '@storybook/react'
 import '@brave/leo/tokens/css/variables.css'
 import { getKeysForMojomEnum } from '$web-common/mojomUtils'
-import { Url } from 'gen/url/mojom/url.mojom.m.js'
 import { InferControlsFromArgs } from '../../../../../.storybook/utils'
 import * as Mojom from '../../common/mojom'
 import FullPage from '../components/full_page'
@@ -335,7 +334,6 @@ type CustomArgs = {
   isUploadingFiles: boolean
   attachmentsDialog: 'tabs' | 'bookmarks' | 'history' | null
   isNewConversation: boolean
-  generatedUrlToBeOpened: Url | undefined
   ratingTurnUuid: { isLiked: boolean; turnUuid: string } | undefined
   isTemporaryChat: boolean
   isDragActive: boolean
@@ -387,7 +385,6 @@ const args: CustomArgs = {
   isUploadingFiles: false,
   attachmentsDialog: null,
   isNewConversation: false,
-  generatedUrlToBeOpened: undefined,
   ratingTurnUuid: undefined,
   isTemporaryChat: false,
   isDragActive: false,
@@ -433,10 +430,6 @@ const meta: Meta<CustomArgs> = {
     },
     deletingConversationId: {
       options: CONVERSATIONS.map((conversation) => conversation.uuid),
-      control: { type: 'select' },
-    },
-    generatedUrlToBeOpened: {
-      options: [{ url: 'https://www.example.com' }],
       control: { type: 'select' },
     },
     ratingTurnUuid: {
@@ -639,7 +632,6 @@ function StoryContext(
         attachmentsDialog: args.attachmentsDialog,
         isDragActive: args.isDragActive,
         isDragOver: args.isDragOver,
-        generatedUrlToBeOpened: args.generatedUrlToBeOpened,
         isUploadingFiles: args.isUploadingFiles,
       }}
       deps={[...Object.values(args)]}
