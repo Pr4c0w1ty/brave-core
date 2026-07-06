@@ -96,7 +96,6 @@ import org.chromium.chrome.browser.multiwindow.MultiWindowModeStateDispatcher;
 import org.chromium.chrome.browser.notifications.BraveNotificationPlatformBridge;
 import org.chromium.chrome.browser.notifications.NotificationBuilderBase;
 import org.chromium.chrome.browser.notifications.NotificationPlatformBridge.NotificationIdentifyingAttributes;
-import org.chromium.chrome.browser.ntp.IncognitoNtpMetrics;
 import org.chromium.chrome.browser.ntp.NewTabPageCreationTracker;
 import org.chromium.chrome.browser.ntp.NewTabPageLayout;
 import org.chromium.chrome.browser.ntp.NewTabPageManager;
@@ -1661,9 +1660,8 @@ public class BytecodeTest {
                         "org/chromium/chrome/browser/ntp/BraveIncognitoNewTabPage",
                         Activity.class,
                         NativePageHost.class,
-                        Tab.class,
-                        MonotonicObservableSupplier.class,
-                        IncognitoNtpMetrics.class));
+                        Profile.class,
+                        MonotonicObservableSupplier.class));
         Assert.assertTrue(
                 constructorsMatch(
                         "org/chromium/chrome/browser/toolbar/top/TopToolbarCoordinator", // presubmit: ignore-long-line
