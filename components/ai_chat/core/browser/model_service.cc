@@ -344,6 +344,32 @@ const std::vector<mojom::ModelPtr>& GetLeoModels() {
       models.push_back(std::move(model));
     }
 
+    // Grok 4.3
+    {
+      auto options = mojom::LeoModelOptions::New();
+      options->display_maker = "xAI";
+      options->name = "bedrock-xai.grok-4.3";
+      options->category = mojom::ModelCategory::CHAT;
+      options->access = mojom::ModelAccess::PREMIUM;
+      options->max_associated_content_length = 1088000;
+      options->long_conversation_warning_character_limit = 870400;
+
+      auto model = mojom::Model::New();
+      model->key = "chat-grok-4-3-bedrock";
+      model->display_name = "Grok 4.3";
+      model->vision_support = true;
+      model->supports_tools = true;
+      model->supported_capabilities = {
+          mojom::ConversationCapability::CHAT,
+          mojom::ConversationCapability::DEEP_RESEARCH};
+      model->is_suggested_model = false;
+      model->is_near_model = false;
+      model->options =
+          mojom::ModelOptions::NewLeoModelOptions(std::move(options));
+
+      models.push_back(std::move(model));
+    }
+
     // Mistral Large 3
     {
       auto options = mojom::LeoModelOptions::New();
@@ -903,6 +929,9 @@ ModelService::GetModelsWithSubtitles() {
       } else if (model->key == "chat-gpt-5-4-bedrock") {
         model_with_subtitle->subtitle =
             l10n_util::GetStringUTF8(IDS_CHAT_UI_CHAT_GPT_5_4_BEDROCK_SUBTITLE);
+      } else if (model->key == "chat-grok-4-3-bedrock") {
+        model_with_subtitle->subtitle =
+            l10n_util::GetStringUTF8(IDS_CHAT_UI_CHAT_GROK_4_3_BEDROCK_SUBTITLE);
       } else if (model->key == "chat-nemotron-nano-3-30b") {
         model_with_subtitle->subtitle = l10n_util::GetStringUTF8(
             IDS_CHAT_UI_CHAT_NEMOTRON_NANO_3_30B_SUBTITLE);

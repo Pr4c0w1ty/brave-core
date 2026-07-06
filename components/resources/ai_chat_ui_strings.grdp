@@ -132,6 +132,9 @@
   <message name="IDS_CHAT_UI_INTRO_MESSAGE_CHAT_GPT_OSS_20B" desc="AI Chat intro message for the GPT OSS 20B model" formatter_data="webui=AiChat">
     Hi, I'm Leo. I'm an AI assistant by Brave. I'm powered by GPT OSS 20B, a model created by OpenAI to be performant and applicable to many use cases. GPT OSS 20B is Brave-hosted through our own secure infrastructure.<ph name="LINK_BEFORE">$1</ph>Learn more<ph name="LINK_AFTER">/$1</ph>
   </message>
+  <message name="IDS_CHAT_UI_INTRO_MESSAGE_CHAT_GROK_4_3_BEDROCK" desc="AI Chat intro message for the Grok 4.3 model" formatter_data="webui=AiChat">
+    Hi, I'm Leo. I'm an AI assistant by Brave. I'm powered by Grok 4.3, a model created by xAI to be performant and applicable to many use cases. Grok 4.3 is Brave-hosted through our own secure infrastructure.<ph name="LINK_BEFORE">$1</ph>Learn more<ph name="LINK_AFTER">/$1</ph>
+  </message>
   <message name="IDS_CHAT_UI_INTRO_MESSAGE_CHAT_MISTRAL_LARGE" desc="AI Chat intro message for the Mistral Large model" formatter_data="webui=AiChat">
     Hi, I'm Leo. I'm an AI assistant by Brave. I'm powered by Mistral Large, a model created by Mistral to be performant and applicable to many use cases. Mistral Large is Brave-hosted through our own secure infrastructure.<ph name="LINK_BEFORE">$1</ph>Learn more<ph name="LINK_AFTER">/$1</ph>
   </message>
@@ -610,6 +613,9 @@
     Fast • Search
   </message>
   <message name="IDS_CHAT_UI_CHAT_GPT_5_4_BEDROCK_SUBTITLE" desc="A description for gpt-5-4-bedrock model" formatter_data="webui=AiChat">
+    Search • Vision • Tools
+  </message>
+  <message name="IDS_CHAT_UI_CHAT_GROK_4_3_BEDROCK_SUBTITLE" desc="A description for grok-4-3-bedrock model" formatter_data="webui=AiChat">
     Search • Vision • Tools
   </message>
   <message name="IDS_CHAT_UI_CHAT_NEMOTRON_NANO_3_30B_SUBTITLE" desc="A description for nemotron-nano-3-30b model" formatter_data="webui=AiChat">

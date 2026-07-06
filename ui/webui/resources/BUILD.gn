@@ -284,6 +284,7 @@ leo_icons_sources = [
   "google-color.svg",
   "graph.svg",
   "grid04.svg",
+  "grok.svg",
   "hamburger-menu.svg",
   "hand-coins.svg",
   "hand-raised.svg",

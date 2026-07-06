@@ -17,6 +17,7 @@ export const modelIcons: Record<string, string> = {
   'chat-glm-4-7-flash': 'zai-color',
   'chat-gpt-oss-20b': 'openai',
   'chat-gpt-5-4-bedrock': 'openai',
+  'chat-grok-4-3-bedrock': 'grok',
   'chat-nemotron-nano-3-30b': 'nvidia-color',
   'chat-mistral-large': 'mistral-color',
   'chat-kimi-k2-5': 'kimi-color',
