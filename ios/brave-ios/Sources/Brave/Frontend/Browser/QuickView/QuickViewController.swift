@@ -87,6 +87,8 @@ class QuickViewController: UIViewController {
   }
 
   private func updateViewModel() {
+    let colors: any BrowserColors = profile.isOffTheRecord ? .privateMode : .standard
+    toolbarViewModel.addressBackgroundColor = colors.chromeBackground
     // update shield button status
     refreshShieldStatus(url: currentTab?.visibleURL ?? url)
     // update action buttons
