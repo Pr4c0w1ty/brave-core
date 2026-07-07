@@ -5,29 +5,26 @@
 
 substitutions:
   - description: |
-      Allow HorizontalTabStripRegionView to be subclassed
+      Expose new_tab_button() and GetComboButton() to Brave
 
-      Brave derives BraveHorizontalTabStripRegionView from this view, so the
-      upstream `final` specifier has to be dropped.
-    pattern: 'class HorizontalTabStripRegionView final'
-    replace: 'class HorizontalTabStripRegionView'
-
-  - description: |
-      Expose new_tab_button() to Brave
-    re_pattern: '(  ~HorizontalTabStripRegionView\(\) override;)'
+      `HorizontalTabStripRegionView` now aliases `HorizontalTabStripRegionViewOld`,
+      so members are injected into that class. `GetComboButton()` restores an
+      accessor upstream removed but Brave still relies on.
+    re_pattern: '(  ~HorizontalTabStripRegionViewOld\(\) override;)'
     replace: |-
       \1
         views::Button* new_tab_button() { return new_tab_button_; }
+        TabStripComboButton* GetComboButton() { return combo_button_; }
 
   - description: |
       Friend the Brave tab strip classes and vertical tab strip test
 
       Grants the Brave tab strip subclasses and the vertical tab strip browser
       test access to private members.
-    re_pattern: '( private:)'
-    replace: |-
-      \1
-        friend class BraveVerticalTabStripRegionView;
+    re_pattern: '(class HorizontalTabStripRegionViewOld.*? private:\n)'
+    re_flags: [DOTALL]
+    replace: |
+      \1  friend class BraveVerticalTabStripRegionView;
         friend class BraveTabStrip;
         friend class BraveHorizontalTabStripRegionView;
         FRIEND_TEST_ALL_PREFIXES(VerticalTabStripBrowserTest, MinHeight);

@@ -1,26 +1,17 @@
 diff --git a/chrome/browser/ui/views/frame/horizontal_tab_strip_region_view.h b/chrome/browser/ui/views/frame/horizontal_tab_strip_region_view.h
-index 774e58392efa7349ecbde4f4fc4bcf4a5e010ec5..8dfb85dcce561c57cf1a502588ad7c198c7a2d9c 100644
+index e84bc8567f61e8bbf3046d6c9f156afb2700ac36..e4b151914b15dc079a10fcaaa3a3e80081dec907 100644
 --- a/chrome/browser/ui/views/frame/horizontal_tab_strip_region_view.h
 +++ b/chrome/browser/ui/views/frame/horizontal_tab_strip_region_view.h
-@@ -33,7 +33,7 @@ class TabStripControlButton;
- 
- // Container for the tabstrip and the other views sharing space with it -
- // with the exception of the caption buttons.
--class HorizontalTabStripRegionView final : public TabStripRegionView {
-+class HorizontalTabStripRegionView : public TabStripRegionView {
-   METADATA_HEADER(HorizontalTabStripRegionView, TabStripRegionView)
- 
-  public:
-@@ -43,6 +43,8 @@ class HorizontalTabStripRegionView final : public TabStripRegionView {
-       delete;
-   ~HorizontalTabStripRegionView() override;
- 
+@@ -42,6 +42,8 @@ class HorizontalTabStripRegionViewOld : public TabStripRegionView {
+   HorizontalTabStripRegionViewOld& operator=(
+       const HorizontalTabStripRegionViewOld&) = delete;
+   ~HorizontalTabStripRegionViewOld() override;
 +  views::Button* new_tab_button() { return new_tab_button_; }
-+
++  TabStripComboButton* GetComboButton() { return combo_button_; }
+ 
    // Returns true if |point| falls within the window caption area of the
    // horizontal tab strip. Returns false if the point hits an interactive child
-   // view. |point| is in the local coordinate space of |this|.
-@@ -115,12 +117,16 @@ class HorizontalTabStripRegionView final : public TabStripRegionView {
+@@ -105,12 +107,16 @@ class HorizontalTabStripRegionViewOld : public TabStripRegionView {
    bool HasLeadingButtons() const;
  
   private:
