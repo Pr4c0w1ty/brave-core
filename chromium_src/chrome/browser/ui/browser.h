@@ -10,10 +10,8 @@
 #include "chrome/browser/ui/unload_controller.h"
 
 #define ScheduleUIUpdate virtual ScheduleUIUpdate
-#define TryToCloseWindow virtual TryToCloseWindow
 #define OnTabClosing virtual OnTabClosing
 #define TabStripEmpty virtual TabStripEmpty
-#define ResetTryToCloseWindow virtual ResetTryToCloseWindow
 #define FullscreenControllerInteractiveTest \
   FullscreenControllerInteractiveTest;      \
   friend class BookmarkPrefsService;        \
@@ -22,8 +20,6 @@
 #include <chrome/browser/ui/browser.h>  // IWYU pragma: export
 
 #undef FullscreenControllerInteractiveTest
-#undef ResetTryToCloseWindow
-#undef TryToCloseWindow
 #undef TabStripEmpty
 #undef OnTabClosing
 #undef ScheduleUIUpdate
