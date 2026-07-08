@@ -6,7 +6,7 @@ index 384c5a6820d836796ac3567dc1a6c58fd5a270a4..3fa4870820359e85fd87ecb90fc606d3
    if (!is_android) {
      deps += [ "//chrome/browser/contextual_cueing/internals" ]
    }
-+  public_deps += [ "//brave/browser:browser_impl" ]
++  public_deps += [ "//brave/browser:core" ]
  
    # This target intentionally has no sources of its own and no
    # allow_circular_includes_from; it only aggregates dependencies. Do NOT add

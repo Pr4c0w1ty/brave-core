@@ -8,7 +8,7 @@ static_library("common") {
   # unless no equivalent is available.
   visibility = [
     ":*",
-    "//brave/browser:browser_impl",
+    "//brave/browser:core",
     "//brave/browser/ui",
     "//brave/components/ai_chat/core/browser",
     "//brave/components/brave_ads/browser",

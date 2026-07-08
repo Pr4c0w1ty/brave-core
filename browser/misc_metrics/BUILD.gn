@@ -29,7 +29,7 @@ source_set("misc_metrics") {
 
 static_library("misc_metrics_impl") {
   visibility = [
-    "//brave/browser:browser_impl",
+    "//brave/browser:core",
     "//brave/browser/misc_metrics/*",
   ]
 

@@ -15,7 +15,7 @@ if (is_android) {
 source_set("headers") {
   visibility = [
     ":*",
-    "//brave/browser:browser_impl",
+    "//brave/browser:core",
     "//brave/browser/extensions",
     "//brave/browser/ui",
     "//brave/components/brave_rewards/content",

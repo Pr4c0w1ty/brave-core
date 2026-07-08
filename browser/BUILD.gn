@@ -55,7 +55,7 @@ source_set("brave_global_features") {
 }
 
 source_set("brave_global_features_impl") {
-  visibility = [ "//brave/browser:browser_impl" ]
+  visibility = [ "//brave/browser:core" ]
   sources = [ "brave_global_features.cc" ]
 
   deps = [
@@ -64,14 +64,7 @@ source_set("brave_global_features_impl") {
   ]
 }
 
-# Additions to `//chrome/browser:browser`. These sources used to be injected
-# directly into `:browser`, but `:browser` has been modularised down to zero
-# sources (and locked down against regaining any), so we mirror upstream's model
-# and keep our sources in our own leaf target that `:browser` depends on.
-# Targets with circular includes back into `:browser` aggregate must depend on
-# `:browser_public_dependencies`, which is what breaks the build-graph cycle in
-# place of using `allow_circular_includes_from`.
-source_set("browser_impl") {
+source_set("core") {
   visibility = [ "//chrome/browser" ]
 
   configs += [

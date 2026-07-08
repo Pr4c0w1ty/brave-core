@@ -26,7 +26,7 @@ component("browser") {
   # All components should have their own InstallerPolicy and be
   # registered in RegisterComponentsForUpdate
   visibility = [
-    "//brave/browser:browser_impl",
+    "//brave/browser:core",
     "//brave/browser/ephemeral_storage:browser_tests",
     "//brave/browser/extensions:component_loader",
     "//brave/browser/extensions:test_support",
