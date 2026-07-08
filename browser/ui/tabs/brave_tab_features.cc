@@ -18,6 +18,7 @@
 #include "chrome/browser/ui/page_action/page_action_controller.h"
 #include "chrome/browser/ui/side_panel/side_panel_registry.h"
 #include "chrome/browser/ui/tabs/public/tab_features.h"
+#include "chrome/browser/ui/ui_features.h"
 #include "chrome/common/chrome_isolated_world_ids.h"
 #include "components/tabs/public/tab_interface.h"
 
@@ -75,8 +76,8 @@ void BraveTabFeatures::Init(TabInterface& tab, Profile* profile) {
   // (e.g. in unit tests that don't register the browser's action items), so
   // guard on ActionExists() to avoid operating on an unregistered page action
   // model.
-  if (base::FeatureList::IsEnabled(psst::features::kEnablePsst) &&
-      page_action_controller() &&
+  if (base::FeatureList::IsEnabled(features::kPageActionsMigration) &&
+      base::FeatureList::IsEnabled(psst::features::kEnablePsst) &&
       page_action_controller()->ActionExists(kActionShowPsstIcon)) {
     psst_action_controller_ =
         std::make_unique<page_actions::PsstActionController>(
@@ -104,7 +105,7 @@ void BraveTabFeatures::Init(TabInterface& tab, Profile* profile) {
     // controller exists (e.g. in unit tests that don't register the browser's
     // action items), so guard on ActionExists() to avoid creating a controller
     // that would operate on an unregistered page action model.
-    if (page_action_controller() &&
+    if (base::FeatureList::IsEnabled(features::kPageActionsMigration) &&
         page_action_controller()->ActionExists(kActionShowPartitionedStorage)) {
       partitioned_storage_page_action_controller_ = std::make_unique<
           page_actions::PartitionedStoragePageActionController>(
