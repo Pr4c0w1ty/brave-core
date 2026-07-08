@@ -1,8 +1,8 @@
 diff --git a/content/browser/renderer_host/navigation_request.cc b/content/browser/renderer_host/navigation_request.cc
-index 3b9a4e3bd25e8e9625f78f183053d3e62887ba5c..4c17774a8d7cc3e1d5a8c0546ba9be6f2a7b8024 100644
+index 60e14e42d96140623f8a85dcfeea79e189d8ad65..d70eb441a938f4ca08285c24833b8c13a3bcd804 100644
 --- a/content/browser/renderer_host/navigation_request.cc
 +++ b/content/browser/renderer_host/navigation_request.cc
-@@ -4027,6 +4027,9 @@ void NavigationRequest::OnRequestRedirected(
+@@ -4026,6 +4026,9 @@ void NavigationRequest::OnRequestRedirected(
    common_params_->url = redirect_info.new_url;
    common_params_->method = redirect_info.new_method;
    common_params_->referrer->url = GURL(redirect_info.new_referrer);
@@ -12,7 +12,7 @@ index 3b9a4e3bd25e8e9625f78f183053d3e62887ba5c..4c17774a8d7cc3e1d5a8c0546ba9be6f
    common_params_->referrer = Referrer::SanitizeForRequest(
        common_params_->url, *common_params_->referrer);
  
-@@ -5988,6 +5991,10 @@ void NavigationRequest::OnStartChecksComplete(
+@@ -5987,6 +5990,10 @@ void NavigationRequest::OnStartChecksComplete(
    // TODO(clamy): Avoid cloning the navigation params and create the
    // ResourceRequest directly here.
  

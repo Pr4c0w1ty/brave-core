@@ -1,8 +1,8 @@
 diff --git a/chrome/browser/ui/android/toolbar/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java b/chrome/browser/ui/android/toolbar/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
-index c3930c0fb9a197ab2d8f0c83897e915446848ca4..940e20d073a6dcc3a3f6a6307f780d8fe86b5f49 100644
+index 26a1d62bfe17d157027ee49d601842e8f48e1915..cb9a6c048b891e50611390abe9a2b5e55961408a 100644
 --- a/chrome/browser/ui/android/toolbar/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
 +++ b/chrome/browser/ui/android/toolbar/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
-@@ -596,6 +596,7 @@ public class ToolbarPhone extends ToolbarLayout
+@@ -595,6 +595,7 @@ public class ToolbarPhone extends ToolbarLayout
          if (mOptionalButtonCoordinator != null) {
              mOptionalButtonCoordinator.setBackgroundColorFilter(color);
          }
@@ -10,7 +10,7 @@ index c3930c0fb9a197ab2d8f0c83897e915446848ca4..940e20d073a6dcc3a3f6a6307f780d8f
      }
  
      private void updateModernLocationBarCorners() {
-@@ -1286,6 +1287,7 @@ public class ToolbarPhone extends ToolbarLayout
+@@ -1285,6 +1286,7 @@ public class ToolbarPhone extends ToolbarLayout
       * Tab Page.
       */
      private void updateLocationBarLayoutForExpansionAnimation() {
@@ -18,7 +18,7 @@ index c3930c0fb9a197ab2d8f0c83897e915446848ca4..940e20d073a6dcc3a3f6a6307f780d8f
          TraceEvent.begin("ToolbarPhone.updateLocationBarLayoutForExpansionAnimation");
          if (isInTabSwitcherMode()) return;
  
-@@ -1703,6 +1705,7 @@ public class ToolbarPhone extends ToolbarLayout
+@@ -1702,6 +1704,7 @@ public class ToolbarPhone extends ToolbarLayout
              }
          }
  
@@ -26,7 +26,7 @@ index c3930c0fb9a197ab2d8f0c83897e915446848ca4..940e20d073a6dcc3a3f6a6307f780d8f
          // Draw the tab stack button and associated text if necessary.
          ToggleTabStackButtonCoordinator tabSwitcherButtonCoordinator =
                  getTabSwitcherButtonCoordinator();
-@@ -2095,6 +2098,7 @@ public class ToolbarPhone extends ToolbarLayout
+@@ -2094,6 +2097,7 @@ public class ToolbarPhone extends ToolbarLayout
      @Override
      public void onHomeButtonIsEnabledUpdate(boolean homeButtonEnabled) {
          mIsHomeButtonEnabled = homeButtonEnabled;
@@ -34,7 +34,7 @@ index c3930c0fb9a197ab2d8f0c83897e915446848ca4..940e20d073a6dcc3a3f6a6307f780d8f
          updateButtonVisibility();
      }
  
-@@ -2504,6 +2508,7 @@ public class ToolbarPhone extends ToolbarLayout
+@@ -2503,6 +2507,7 @@ public class ToolbarPhone extends ToolbarLayout
          } else {
              populateUrlClearExpansionAnimatorSet(animators);
          }

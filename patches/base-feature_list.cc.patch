@@ -1,8 +1,8 @@
 diff --git a/base/feature_list.cc b/base/feature_list.cc
-index 5166e0ad96f1441207f09946dd5953ffbd7fdf55..868b6e5177052e07f7728ff64816ff26b2ad3063 100644
+index 1b4810d0a53526c47d132b4f5fba918dce6ffd8a..86f8cf04a4b1c86bca69b4e1b8fe096e7b4bc0f9 100644
 --- a/base/feature_list.cc
 +++ b/base/feature_list.cc
-@@ -616,7 +616,7 @@ bool FeatureList::UpdateRuntimeMutableFeatureState(
+@@ -623,7 +623,7 @@ bool FeatureList::UpdateRuntimeMutableFeatureState(
    return true;
  }
  
@@ -11,7 +11,7 @@ index 5166e0ad96f1441207f09946dd5953ffbd7fdf55..868b6e5177052e07f7728ff64816ff26
    return GetOverrideEntryByFeatureName(feature_name);
  }
  
-@@ -723,8 +723,8 @@ bool FeatureList::IsEnabled(const Feature& feature) {
+@@ -730,8 +730,8 @@ bool FeatureList::IsEnabled(const Feature& feature) {
      EarlyFeatureAccessTracker::GetInstance()->AccessedFeature(
          feature, g_feature_list_instance &&
                       g_feature_list_instance->IsEarlyAccessInstance());
@@ -22,7 +22,7 @@ index 5166e0ad96f1441207f09946dd5953ffbd7fdf55..868b6e5177052e07f7728ff64816ff26
    }
    return g_feature_list_instance->IsFeatureEnabled(feature);
  }
-@@ -735,7 +735,7 @@ bool FeatureList::IsValidFeatureOrFieldTrialName(std::string_view name) {
+@@ -742,7 +742,7 @@ bool FeatureList::IsValidFeatureOrFieldTrialName(std::string_view name) {
  }
  
  // static
@@ -31,7 +31,7 @@ index 5166e0ad96f1441207f09946dd5953ffbd7fdf55..868b6e5177052e07f7728ff64816ff26
    if (!g_feature_list_instance ||
        !g_feature_list_instance->AllowFeatureAccess(feature)) {
      EarlyFeatureAccessTracker::GetInstance()->AccessedFeature(
-@@ -1047,7 +1047,7 @@ bool FeatureList::IsFeatureEnabled(const Feature& feature) const {
+@@ -1054,7 +1054,7 @@ bool FeatureList::IsFeatureEnabled(const Feature& feature) const {
      return overridden_state == OVERRIDE_ENABLE_FEATURE;
    }
  
@@ -40,7 +40,7 @@ index 5166e0ad96f1441207f09946dd5953ffbd7fdf55..868b6e5177052e07f7728ff64816ff26
      const auto& restricted_feature =
          static_cast<const FeatureWithCountryRestriction&>(feature);
      switch (restricted_feature.default_state) {
-@@ -1062,7 +1062,7 @@ bool FeatureList::IsFeatureEnabled(const Feature& feature) const {
+@@ -1069,7 +1069,7 @@ bool FeatureList::IsFeatureEnabled(const Feature& feature) const {
      }
    }
  

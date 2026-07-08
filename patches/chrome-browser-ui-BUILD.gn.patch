@@ -1,8 +1,8 @@
 diff --git a/chrome/browser/ui/BUILD.gn b/chrome/browser/ui/BUILD.gn
-index 86e90d83e334d3b15f649808a3aed521243f5a32..81e6713325d311e9c5ce7f75d02a0866c8adc9bf 100644
+index c099fa43af6263a3db80e68a5cd0127cb62030ec..36b333efc38cb7b9bfaaebb6bc896108efb26b68 100644
 --- a/chrome/browser/ui/BUILD.gn
 +++ b/chrome/browser/ui/BUILD.gn
-@@ -1259,6 +1259,7 @@ static_library("ui") {
+@@ -1367,6 +1367,7 @@ static_library("ui") {
      # split out yet.
      "//chrome/browser/webauthn:impl",
    ]
@@ -10,7 +10,7 @@ index 86e90d83e334d3b15f649808a3aed521243f5a32..81e6713325d311e9c5ce7f75d02a0866
  
    if (enable_vr && is_win) {
      deps += [ "//chrome/browser/vr:vr_base" ]
-@@ -5607,6 +5608,7 @@ group("ui_public_dependencies") {
+@@ -5551,6 +5552,7 @@ group("ui_public_dependencies") {
      "//components/enterprise/buildflags",
      "//components/paint_preview/buildflags",
      "//components/safe_browsing:buildflags",
@@ -18,7 +18,7 @@ index 86e90d83e334d3b15f649808a3aed521243f5a32..81e6713325d311e9c5ce7f75d02a0866
      "//components/segmentation_platform/public",
      "//components/sync",
      "//components/sync_user_events",
-@@ -5619,6 +5621,7 @@ group("ui_public_dependencies") {
+@@ -5563,6 +5565,7 @@ group("ui_public_dependencies") {
    if (enable_extensions_core) {
      public_deps += [ "//extensions/browser" ]
    }

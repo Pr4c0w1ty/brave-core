@@ -1,8 +1,8 @@
 diff --git a/chrome/android/java/src/org/chromium/chrome/browser/app/appmenu/AppMenuPropertiesDelegateImpl.java b/chrome/android/java/src/org/chromium/chrome/browser/app/appmenu/AppMenuPropertiesDelegateImpl.java
-index ca950caa15b62ac286b6f58dd2cfd86a2fcb516f..44e406f6777cbe24448874d2dc086fa493cea19d 100644
+index fa6d87eb6228debb31960b4be541f27083ae65ff..08a20901d2b24122b7e4948cfdbd3a0c5352328e 100644
 --- a/chrome/android/java/src/org/chromium/chrome/browser/app/appmenu/AppMenuPropertiesDelegateImpl.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/app/appmenu/AppMenuPropertiesDelegateImpl.java
-@@ -42,6 +42,7 @@ import org.chromium.build.annotations.NullMarked;
+@@ -36,6 +36,7 @@ import org.chromium.build.annotations.NullMarked;
  import org.chromium.build.annotations.Nullable;
  import org.chromium.build.annotations.RequiresNonNull;
  import org.chromium.chrome.R;
@@ -10,7 +10,7 @@ index ca950caa15b62ac286b6f58dd2cfd86a2fcb516f..44e406f6777cbe24448874d2dc086fa4
  import org.chromium.chrome.browser.ActivityTabProvider;
  import org.chromium.chrome.browser.accessibility.PageZoomMenuItemViewBinder;
  import org.chromium.chrome.browser.bookmarks.BookmarkModel;
-@@ -744,7 +745,7 @@ public abstract class AppMenuPropertiesDelegateImpl implements AppMenuProperties
+@@ -471,7 +472,7 @@ public abstract class AppMenuPropertiesDelegateImpl implements AppMenuProperties
          //                is not persisted when adding to the homescreen.
          // * If creating shortcuts it not supported by the current home screen.
          return WebappsUtils.isAddToHomeIntentSupported()
