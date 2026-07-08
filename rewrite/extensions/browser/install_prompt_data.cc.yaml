@@ -6,7 +6,8 @@
 substitutions:
   - description: |-
       Use Brave's "unvetted extension" install prompt title.
-    re_pattern: '(std::u16string InstallPromptData::GetDialogTitle\(\) const \{\n)'
+    re_pattern:
+      '(std::u16string InstallPromptData::GetDialogTitle\(\) const \{\n)'
     replace: |
       \1  if (type_ == INSTALL_PROMPT) {
           return l10n_util::GetStringUTF16(
