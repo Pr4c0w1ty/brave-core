@@ -468,11 +468,6 @@ are declared in tools/grit/grit_args.gni.
       <if expr="enable_extensions_core">
         </if>
 
-      <if expr="use_titlecase">
-        </if>
-      <if expr="not use_titlecase">
-        </if>
-
       <if expr="enable_extensions_core">
         <if expr="is_win">
           </if>
@@ -1126,7 +1121,7 @@ are declared in tools/grit/grit_args.gni.
 
       <if expr="is_macosx">
         </if> <if expr="is_macosx">
-        <message name="IDS_NEW_INCOGNITO_WINDOW_MAC" desc="The Mac menu item for opening a new Private window in the file menu.">
+        <message name="IDS_NEW_INCOGNITO_WINDOW_MAC" desc="In Title Case: The Mac menu item for opening a new Private window in the file menu.">
           New Private Window
         </message>
         </if> <if expr="is_posix and not is_macosx">
@@ -1209,9 +1204,6 @@ are declared in tools/grit/grit_args.gni.
 
     <if expr="not is_android">
       </if>
-    <if expr="not is_android">
-      </if>
-
     <if expr="not is_android">
       <if expr="use_titlecase">
         </if>
