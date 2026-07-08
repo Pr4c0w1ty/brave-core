@@ -18,7 +18,6 @@ substitutions:
       ]
   - description: |
       Do not format submodules.
-    re_pattern: '\]\n\Z'
+    re_pattern: '\Z'
     replace: |
-      ]
       skip_children = true  # Do not format submodules.
