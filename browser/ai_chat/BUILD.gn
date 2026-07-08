@@ -38,6 +38,8 @@ static_library("ai_chat") {
     "tools/code_execution_tool.h",
     "tools/history_search_tool.cc",
     "tools/history_search_tool.h",
+    "tools/tab_semantic_search_tool.cc",
+    "tools/tab_semantic_search_tool.h",
     "web_mcp_injection/web_mcp_injection_rule.cc",
     "web_mcp_injection/web_mcp_injection_rule.h",
     "web_mcp_injection/web_mcp_injector.cc",
@@ -58,6 +60,7 @@ static_library("ai_chat") {
   deps = [
     "//brave/brave_domains",
     "//brave/browser:browser_process",
+    "//brave/browser/history_embeddings:open_tab_search",
     "//brave/browser/misc_metrics",
     "//brave/browser/skus",
     "//brave/common:webui_url_constants",
@@ -73,6 +76,7 @@ static_library("ai_chat") {
     "//brave/net/base:utils",
     "//chrome/browser:browser_process",
     "//chrome/browser/actor",
+    "//chrome/browser/history",
     "//chrome/browser/history_embeddings",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui/tabs:tabs_public",
@@ -278,12 +282,14 @@ source_set("unit_tests") {
     "brave_open_ai_chat_permission_context_unittest.cc",
     "full_screenshotter_unittest.cc",
     "tools/history_search_tool_unittest.cc",
+    "tools/tab_semantic_search_tool_unittest.cc",
   ]
 
   deps = [
     "//base",
     "//base/test:test_support",
     "//brave/browser/ai_chat",
+    "//brave/browser/history_embeddings:open_tab_search",
     "//brave/components/ai_chat/content/browser",
     "//brave/components/ai_chat/core/common",
     "//brave/components/ai_chat/core/common/mojom",

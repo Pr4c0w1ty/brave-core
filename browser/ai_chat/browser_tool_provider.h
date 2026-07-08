@@ -25,6 +25,7 @@ namespace ai_chat {
 class CodeExecutionTool;
 class HistorySearchTool;
 class TabManagementTool;
+class TabSemanticSearchTool;
 
 // Implementation of ToolProvider that provides browser-specific
 // tools for conversations.
@@ -53,6 +54,7 @@ class BrowserToolProvider : public ToolProvider {
 #if BUILDFLAG(ENABLE_AI_CHAT_TAB_MANAGEMENT_TOOL)
   std::unique_ptr<TabManagementTool> tab_management_tool_;
 #endif
+  std::unique_ptr<TabSemanticSearchTool> tab_semantic_search_tool_;
   raw_ptr<Profile> profile_ = nullptr;
 };
 
