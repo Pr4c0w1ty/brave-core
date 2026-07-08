@@ -212,7 +212,11 @@ export function createSearchStore() {
         query = [searchEngine.keyword, query].join(' ')
       }
       searchProxy.handler.queryAutocomplete(
-        activeQueryId++, query, false, query.length)
+        activeQueryId++,
+        query,
+        false,
+        query.length,
+      )
     },
 
     openAutocompleteMatch(index, event) {
