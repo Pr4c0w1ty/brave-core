@@ -104,43 +104,43 @@ EXTRA_DEPS = {
             },
         ],
     },
-    'src/brave/third_party/node/linux': {
+    'src/brave/third_party/node/node-linux-x64': {
         'bucket': 'https://brave-build-deps-public.s3.brave.com/nodejs/',
         'condition': 'host_os == "linux"',
         'objects': [
             {
                 'object_name': 'node-v24.17.0-linux-x64.tar.gz',
-                'sha256sum': 'e0472427aa791ad80bdc426ff7cc73cdd28ed0f616d1ff9689a23a7f47f1265f',
+                'sha256sum': '9bbe0968b2c682ccc6977e6978f923d36ccd979a536efa2162430976c59306b8',
             },
         ],
     },
-    'src/brave/third_party/node/mac': {
+    'src/brave/third_party/node/node-mac-x64': {
         'bucket': 'https://brave-build-deps-public.s3.brave.com/nodejs/',
         'condition': 'host_os == "mac" and host_cpu == "x64"',
         'objects': [
             {
-                'object_name': 'node-v24.17.0-darwin-x64.tar.gz',
-                'sha256sum': '80da552fe037290cb130e9dea590f5eeeb7aa450636f0c89ab41415511c1ec27',
+                'object_name': 'node-v24.17.0-mac-x64.tar.gz',
+                'sha256sum': '5abf0c2a98691e2b141f8e5e2452ccbcc62d27c67427d78f87489c3a01a807e4',
             },
         ],
     },
-    'src/brave/third_party/node/mac_arm64': {
+    'src/brave/third_party/node/node-mac-arm64': {
         'bucket': 'https://brave-build-deps-public.s3.brave.com/nodejs/',
         'condition': 'host_os == "mac" and host_cpu == "arm64"',
         'objects': [
             {
-                'object_name': 'node-v24.17.0-darwin-arm64.tar.gz',
-                'sha256sum': '4fc3266a3702eebc39cc37661cf4eeceeade307e242ab64e4d7ce7949197e11f',
+                'object_name': 'node-v24.17.0-mac-arm64.tar.gz',
+                'sha256sum': 'c556a8f72fea325467fac714d7ffc239dceb8b8de7a297053d60209fcb4010e4',
             },
         ],
     },
-    'src/brave/third_party/node/win': {
+    'src/brave/third_party/node/node-win-x64': {
         'bucket': 'https://brave-build-deps-public.s3.brave.com/nodejs/',
         'condition': 'host_os == "win"',
         'objects': [
             {
-                'object_name': 'node-v24.17.0-win-x64.zip',
-                'sha256sum': 'f2aa33b35b75aca5f3f7b85675a6f6423201053e9381911e64961f3bda2528ab',
+                'object_name': 'node-v24.17.0-win-x64.tar.gz',
+                'sha256sum': '464837212e3dbb6ce95e786d2d2c641fe5bff511b5005f176fd60fdd83134d44',
             },
         ],
     },
