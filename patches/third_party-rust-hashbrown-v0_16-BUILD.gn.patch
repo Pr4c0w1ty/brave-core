@@ -1,5 +1,5 @@
 diff --git a/third_party/rust/hashbrown/v0_16/BUILD.gn b/third_party/rust/hashbrown/v0_16/BUILD.gn
-index ffd452121f7d811c9382942fc5b3c865dc3525a2..cf4bec39e4e069b804907d2f6f8e560342f745e0 100644
+index ffd452121f7d811c9382942fc5b3c865dc3525a2..510e2dbbd1027f818a0b9d639cb56efb18f14348 100644
 --- a/third_party/rust/hashbrown/v0_16/BUILD.gn
 +++ b/third_party/rust/hashbrown/v0_16/BUILD.gn
 @@ -70,7 +70,7 @@ cargo_crate("lib") {
@@ -11,11 +11,10 @@ index ffd452121f7d811c9382942fc5b3c865dc3525a2..cf4bec39e4e069b804907d2f6f8e5603
  
    #####################################################################
    # Tweaking which GN `config`s apply to this target.
-@@ -101,4 +101,15 @@ cargo_crate("lib") {
+@@ -101,4 +101,14 @@ cargo_crate("lib") {
    executable_configs += _configs_to_add
    proc_macro_configs -= _configs_to_remove
    proc_macro_configs += _configs_to_add
-+
 +  deps += [
 +    "//brave/third_party/rust/allocator_api2/v0_2:lib",
 +    "//brave/third_party/rust/equivalent/v1:lib",

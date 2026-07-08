@@ -6,10 +6,9 @@
 substitutions:
   - description: |
       Append Brave-specific deps and features to the hashbrown crate.
-    re_pattern: '(  proc_macro_configs \+= _configs_to_add\n)\}'
+    re_pattern: '(cargo_crate\("lib"\) \{[^}]*?)\}'
     replace: |-
-      \1
-        deps += [
+      \1  deps += [
           "//brave/third_party/rust/allocator_api2/v0_2:lib",
           "//brave/third_party/rust/equivalent/v1:lib",
         ]
