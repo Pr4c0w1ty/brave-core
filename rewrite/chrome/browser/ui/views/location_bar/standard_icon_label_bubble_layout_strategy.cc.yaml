@@ -10,8 +10,8 @@ substitutions:
       Widens the "expand to fit the label" condition so that page actions whose
       label must always be shown are not clamped to their minimum size.
     re_pattern:
-      'if (\(host->ShouldShowLabel\(\) &&\s+host->label\(\)->GetElideBehavior\(\)
-      != gfx::NO_ELIDE\)) {'
+      'if (\(host->ShouldShowLabel\(\)
+      &&\s+host->label\(\)->GetElideBehavior\(\) != gfx::NO_ELIDE\)) {'
     replace: 'if (\1 || host->ShouldAlwaysShowLabel()) {'
 
   - description: |
