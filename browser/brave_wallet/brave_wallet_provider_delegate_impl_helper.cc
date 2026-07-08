@@ -53,12 +53,17 @@ void UnlockWallet() {
 }
 
 void ShowWalletOnboarding(content::WebContents* web_contents) {
-  BrowserWindowInterface* browser =
-      GlobalBrowserCollection::GetInstance()->FindBrowserWithTab(web_contents);
+  if (web_contents) {
+    BrowserWindowInterface* browser =
+        GlobalBrowserCollection::GetInstance()->FindBrowserWithTab(
+            web_contents);
+    if (browser) {
+      brave::ShowBraveWalletOnboarding(browser);
+      return;
+    }
+  }
 
-  if (browser) {
-    brave::ShowBraveWalletOnboarding(browser);
-  } else if (g_new_setup_needed_callback_for_testing) {
+  if (g_new_setup_needed_callback_for_testing) {
     CHECK_IS_TEST();
     CHECK(*g_new_setup_needed_callback_for_testing);
     std::move(*g_new_setup_needed_callback_for_testing).Run();
@@ -67,18 +72,23 @@ void ShowWalletOnboarding(content::WebContents* web_contents) {
 
 void ShowAccountCreation(content::WebContents* web_contents,
                          brave_wallet::mojom::CoinType coin_type) {
-  BrowserWindowInterface* browser =
-      GlobalBrowserCollection::GetInstance()->FindBrowserWithTab(web_contents);
-
   auto it = kAccountCreationCoinName.find(coin_type);
   if (kAccountCreationCoinName.find(coin_type) ==
       kAccountCreationCoinName.end()) {
     return;
   }
 
-  if (browser) {
-    brave::ShowBraveWalletAccountCreation(browser, it->second);
-  } else if (g_account_creation_callback_for_testing) {
+  if (web_contents) {
+    BrowserWindowInterface* browser =
+        GlobalBrowserCollection::GetInstance()->FindBrowserWithTab(
+            web_contents);
+    if (browser) {
+      brave::ShowBraveWalletAccountCreation(browser, it->second);
+      return;
+    }
+  }
+
+  if (g_account_creation_callback_for_testing) {
     CHECK_IS_TEST();
     CHECK(*g_account_creation_callback_for_testing);
     std::move(*g_account_creation_callback_for_testing).Run(it->second);
