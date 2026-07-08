@@ -8,7 +8,7 @@ substitutions:
       Add Brave's extensions resources to the WebUI data source.
     re_pattern:
       '(content::WebUIDataSource\*
-      CreateAndAddExtensionsSource\(Profile.+?\n)(  return source;)'
+      CreateAndAddExtensionsSource\([^{]*\{.+?\n)(  return source;)'
     re_flags: [DOTALL]
     replace: |-
       \1  BraveAddExtensionsResources(source, profile);
