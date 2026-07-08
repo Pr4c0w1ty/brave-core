@@ -29,7 +29,9 @@ substitutions:
       dialog logic runs again on the next attempt.
       `UnloadController::FinishWarnBeforeClosing()` is where that decision now
       is made.
-    re_pattern: '(void UnloadController::FinishWarnBeforeClosing\(WarnBeforeClosingResult result\) \{\n)'
+    re_pattern:
+      '(void UnloadController::FinishWarnBeforeClosing\(WarnBeforeClosingResult
+      result\) \{\n)'
     replace: |
       \1  if (result == WarnBeforeClosingResult::kDoNotClose) {
           confirmed_to_close_ = false;
