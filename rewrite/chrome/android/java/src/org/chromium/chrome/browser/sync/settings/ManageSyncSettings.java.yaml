@@ -32,7 +32,6 @@ substitutions:
       onGoogleActivityControlsClicked to be empty, keeping Brave's Google
       account details out of the activity controls flow.
     re_pattern:
-      'AccountInfo primaryAccount =
-      getIdentityManager\(\)\.getPrimaryAccountInfo\(\)'
+      'primaryAccount = getIdentityManager\(\)\.getPrimaryAccountInfo\(\)'
     replace: |-
-      AccountInfo primaryAccount = new AccountInfo.Builder("", new org.chromium.google_apis.gaia.GaiaId("")).build()
+      primaryAccount = new AccountInfo.Builder("", new org.chromium.google_apis.gaia.GaiaId("")).build()
