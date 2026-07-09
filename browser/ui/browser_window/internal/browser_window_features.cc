@@ -211,3 +211,8 @@ void BrowserWindowFeatures::TearDownPreBrowserWindowDestruction() {
 #endif
   }
 }
+
+void BrowserWindowFeatures::SetVerticalTabControllerForTesting(
+    std::unique_ptr<VerticalTabController> vertical_tab_controller) {
+  vertical_tab_controller_ = std::move(vertical_tab_controller);
+}
